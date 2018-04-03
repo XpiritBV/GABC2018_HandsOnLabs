@@ -30,7 +30,31 @@ As we are not interested in this specific sample data but want to analyze our vi
 
 The file to import can be found in [GitHub](https://raw.githubusercontent.com/XpiritBV/GABC2018_HandsOnLabs/master/ML/TheFamily.csv).
 
-Connect the data import block to the Clean Missing data block.
+Connect the data import block to the `Clean Missing Data` block.
+
+## Select data
+
+As we do not need all the data columns, we can clean some of the data. Include a 
+
+## Edit metadata
+
+Categorize data...
+
+## Scrub the data
+
+Not all the data is needed, so we need to clean the dataset. The 'Clean Missing Data' can be used for this purpose.
+
+Remove the columns by excluding them from the set:
+
+![azuremlcleandata.png](azuremlcleandata.png)
+
+
+## Split
+
+## Train
+
+## Score and evaluate
+
 
 
 
