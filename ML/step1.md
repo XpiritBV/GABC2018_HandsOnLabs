@@ -22,6 +22,15 @@ Hover over the Sample 5 card and select _Open in studio_.
 
 You will now have a nice starting point to begin building your own model for this workshop.
 
+## Import data
+
+As we are not interested in this specific sample data but want to analyze our victim data, we need to import our dataset. Remove the existing `Adult Census Income Binary Classification dataset` and replace it with an `Import Data` block. Select CSV as the data source and select as data source the `Web URL via HTTP`. 
+
+![azuremlimportdata.png](azuremlimportdata.png)
+
+The file to import can be found in [GitHub](https://raw.githubusercontent.com/XpiritBV/GABC2018_HandsOnLabs/master/ML/TheFamily.csv).
+
+Connect the data import block to the Clean Missing data block.
 
 
 
