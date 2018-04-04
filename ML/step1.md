@@ -34,15 +34,15 @@ The file to import can be found in [GitHub](https://raw.githubusercontent.com/Xp
 
 ## Select data
 
-As we do not need all the data columns, we need to clean some of the data. Use a *Select Columns in Dataset* block to exclude the Name, FamilyMemberId, LastSeenAtCode and PassportNr columns. Keeping all the others.
+As we do not need all the data columns, we need to clean some of the data. Use a *Select Columns in Dataset* block to exclude the Name, FamilyMemberId, LastSeenAtCode and PassportNr columns. Keep all the other columns, we need them for the analysis.
 
 ## Edit metadata
 
-The next step is to make the data categorical. This tells the system how to use the columns further downstream. You can use an *Edit Metadata* block for this. Make sure to select the *Make Categorical* option and apply this on rank, neighbourhood, alive and gender columns.  
+The next step is to make the data categorical. This tells the system how to use the columns further downstream. You can use an *Edit Metadata* block for this. Make sure to select the *Make Categorical* option and apply this on Rank, Neighbourhood, Alive and Gender columns.  
 
 ## Scrub the data
 
-Not all the data is clean enough. We have missing values, empty rows ec, so we need to clean the dataset. The 'Missing Value Scrubber' can be used for this purpose. We advice to place two of those after each other. The first one need to replace missing values with the median and the second one should just drop the entire row when there are any left over missing values.
+Not all the data is clean enough. We have missing values, empty rows ec, so we need to clean the dataset. The 'Missing Value Scrubber' can be used for this purpose. We advice to place two of those after each other. The first one needs to replace missing values with the median and the second one should just drop the entire row when there are any left over missing values.
 
 ## Split
 
@@ -50,7 +50,7 @@ Time to split the data, we need some of it to train, some of it to learn the mod
 
 ## Train
 
-Part of the split data goes to the model training part. Which is based on the *two-class boosted decision tree*. There are more classification options available, so when you have time, try some others to see how they score.
+Part of the split data goes to the model training part. Which is based on the *two-class boosted decision tree*. There are more classification options available, so when you have time, try some others to see how they score (see below for an explanation how to check the scoring).
 
 ## Score and evaluate
 
@@ -61,6 +61,7 @@ The end result of these steps should be something like the below:
 ![azuremlfinalmodel.png](azuremlfinalmodel.png)
 
 Try to run often and visualize the results by right clicking on the *Evaluate Model* block and selecting *Evaluation results* / *Visualize*.
+![azuremlvisualizemodel.png](azuremlvisualizemodel.png)
 
 See if you can hit an accuracy of around 82%
 
