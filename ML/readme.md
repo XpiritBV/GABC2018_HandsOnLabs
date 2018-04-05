@@ -6,6 +6,38 @@ Welcome to the Machine Learning workshop of the Global Azure Bootcamp. In this w
 
 > TODO link to presentation
 
+## About the data
+
+Over the past years, we have compiled a data set about an infamous criminal 'family'. Members are born or hired into the family.
+
+### The Family
+
+The family consists of hundreds of members. There is a strict hierarchy, a rank determines how much power an individual member has.
+Over the past years, many members have died because of violent interactions with other families and the law. We have noticed that women and children have a higher survival rate than men. Members of lower ranks have a lower survival rate than higher ranked individuals.
+
+### Summary
+
+For every family member, we compiled the following information:
+
+- FamilyMemberId: Unique identifier
+- Alive: Living or dead
+- Rank:	
+  1. Boss
+  2. Leader
+  3. Henchman
+- Name: Name
+- Gender: Gender
+- Age:	Age or estimated age
+- Parch: The amount of parents and children the member has within family	
+- SibSp:	The amount of siblings and spouses the member has within family
+- PassportNr: Passport number
+- Income: Income in hundreds of $ per month
+- LastSeenAtCode: Last seen at this segment of map
+- Neighbourhood: 
+  - S: Staten Island 
+  - C: Chelsea  
+  - Q: Queens
+
 ## Walkthrough
 
 We divided the workshop into multiple parts;
