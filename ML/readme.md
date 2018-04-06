@@ -1,10 +1,10 @@
 # Machine Learning
 
-Welcome to the Machine Learning workshop of the Global Azure Bootcamp. In this workshop you will learn how to use Azure Machine Learning to predict who will be the next victim.
+Welcome to the Machine Learning workshop of the Global Azure Bootcamp. In this workshop, you will learn how to use Azure Machine Learning to predict who will be the next victim.
 
 ## Introduction
 
-> TODO link to presentation
+> TODO link to the presentation
 
 ## About the data
 
@@ -21,19 +21,19 @@ For every family member, we compiled the following information:
 
 - FamilyMemberId: Unique identifier
 - Alive: Living or dead
-- Rank:	
+- Rank:    
   1. Boss
   2. Leader
   3. Henchman
 - Name: Name
 - Gender: Gender
-- Age:	Age or estimated age
-- Parch: The amount of parents and children the member has within family	
-- SibSp:	The amount of siblings and spouses the member has within family
+- Age:    Age or estimated age
+- Parch: The number of parents and children the member has within the family    
+- SibSp:    The number of siblings and spouses the member has within the family
 - PassportNr: Passport number
 - Income: Income in hundreds of $ per month
-- LastSeenAtCode: Last seen at this segment of map
-- Neighbourhood: 
+- LastSeenAtCode: Last seen in this segment of the map
+- Neighborhood: 
   - S: Staten Island 
   - C: Chelsea  
   - Q: Queens
@@ -43,5 +43,5 @@ For every family member, we compiled the following information:
 We divided the workshop into multiple parts;
 
 1. [Step 1](step1.md); build the ML model
-2. [Step 2](step2.md); deploy webservice
+2. [Step 2](step2.md); deploy web service
 4. [Step 3](step3.md); find the victim!
