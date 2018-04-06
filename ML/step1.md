@@ -42,7 +42,7 @@ The next step is to make the data categorical. This tells the system how to use 
 
 ## Scrub the data
 
-Not all the data is clean enough. We have missing values, empty rows ec, so we need to clean the dataset. The 'Missing Value Scrubber' can be used for this purpose. We advice to place two of those after each other. The first one needs to replace missing values with the median and the second one should just drop the entire row when there are any left over missing values.
+Not all the data is clean enough. We have missing values, empty rows ec, so we need to clean the dataset. The 'Missing Value Scrubber' can be used for this purpose. We advise to place two of those after each other. The first one needs to replace missing values with the median and the second one should just drop the entire row when there are any leftover missing values.
 
 ## Split
 
@@ -60,7 +60,7 @@ The end result of these steps should be something like the below:
 
 ![azuremlfinalmodel.png](azuremlfinalmodel.png)
 
-Try to run often and visualize the results by right clicking on the *Evaluate Model* block and selecting *Evaluation results* / *Visualize*.
+Try to run often and visualize the results by right-clicking on the *Evaluate Model* block and selecting *Evaluation results* / *Visualize*.
 ![azuremlvisualizemodel.png](azuremlvisualizemodel.png)
 
 See if you can hit an accuracy of around 82%
