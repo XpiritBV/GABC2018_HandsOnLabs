@@ -21,3 +21,5 @@ Use the following data and record the outcome.
 |3|male|17|0|0|7.8958|S|      
 |1|male|40|1|5|311.3875|C|    
 |1|male|40|1|5|19.3875|Q|
+
+**Note:** you can use the button 'Test' to feed the parameters to the service for easy testing. 
