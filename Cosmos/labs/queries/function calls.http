@@ -1,0 +1,22 @@
+### Retrieve a document from CosmosDB by its document id
+@database = nycdatabase
+@collection = complaints
+@documentid = 861034913
+GET http://localhost:7071/api/getbyid/{{database}}/{{collection}}/{{documentid}}
+
+### Retrieve complaints by offense id
+@offenseId = 101
+
+GET http://localhost:7071/api/getComplaintsByOffenseId/{{offenseId}}
+
+### Retrieve complaints by offense id and date
+@date = 2014-01-29
+GET http://localhost:7071/api/getComplaintsByOffenseId/{{offenseId}}?date={{date}}
+
+### Remote: Retrieve complaints based on the offense ID and date
+@functionUrlBase = gabcnyc-func.azurewebsites.net
+@offenseId = 101
+@functionkey = 
+@date = 2014-01-29
+GET https://{{functionUrlBase}}/api/getComplaintsByOffenseId/{{offenseId}}?code={{functionkey}}&date={{date}}
+
