@@ -12,7 +12,7 @@ There is both a request/response endpoint as well as a batch endpoint and both c
 
 We built this model to predict who will be the next victim and with some hints, we should be able to query the system and find out who will most likely not survive the night.
 
-Use the following data and record the outcome.
+We detected a new mob family moving into town. Their properties are listed below and are not part of the already trained model. Use the following data and record the outcome.
 
 |Rank|Gender|Age|SiblingSpouse|ParentChild|Income|Neighbourhood|
 |--|--|--|--|--|--|--|
@@ -21,5 +21,9 @@ Use the following data and record the outcome.
 |3|male|17|0|0|7.8958|S|      
 |1|male|40|1|5|311.3875|C|    
 |1|male|40|1|5|19.3875|Q|
+|2|male|36|1|1|3690|C|
+|3|male|36|1|1|3690|Q|
 
-**Note:** you can use the button 'Test' to feed the parameters to the service for easy testing. 
+One of those family members was demoted and forced to move to Queens. We do not know why, but he messed up seriously. Maybe he will be wacked by his own...
+
+**Note:** you can use the button 'Test' to feed the parameters to the service for easy testing.
