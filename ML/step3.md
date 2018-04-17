@@ -22,6 +22,9 @@ We detected a new mob family moving into town. Their properties are listed below
 |1|male|40|1|5|311.3875|C|    
 |2|male|36|1|1|3690|C|
 
-> **Incoming TIP** One of those family members was recently demoted and forced to move to Queens. We do not know why, but he messed up seriously. Maybe he will be wacked by his own...
-
 **Note:** you can use the button 'Test (preview)' to feed the parameters to the service for easy testing.
+
+## The tip!
+
+It turned out that the above data is not totally up to date. One of those family members was recently demoted from boss to henchman and forced to move to Queens. We do not know why, but he messed up seriously. Maybe he will be wacked by his own...
+
