@@ -55,7 +55,7 @@
     - Skip line count: leave empty
     - The first data row contains colomn names: `check`
     - Treat empty column value as null: `check`
-    - Schema -> Edit: Check the NYPD_Complaint_Data_Column_Description.csv for the correct data types. -> Next
+    - Schema -> Edit: Check the `data\NYPD_Complaint_Data_Column_Description.csv` for the correct data types. -> Next
 9. Destination:
     - Destination data store: `Azure Cosmos DB` -> Next
 10. Specify Azure Cosmos DB (NoSQL) connection:
@@ -76,7 +76,7 @@
         - Cloud units: `4`
         - Parallel copies: `4` -> Next
 14. Summary -> Next
-15. Deployment -> Monitor. The copy action will take approx 7 minutes and should copy 39219 records.
+15. Deployment -> Monitor. The copy action will take approx 7 minutes and should copy 39219 complaint records into Cosmos DB.
 16. Go to the Cosmos DB instance and navigate to the complaints collection. Create a SQL query to find the complaint records which correspond to a murder on 29th Jan 2014. In the next step you will create an Azure Function that can retrieve this data through an HTTP endpoint.
 
 How many murders were committed on 29th Jan 2014?
@@ -89,7 +89,7 @@ How many murders were committed on 29th Jan 2014?
     - `CosmosDbUri`
     - `CosmosDbConnection`
 3. Run the function locally to check if the function connects to the Cosmos DB instance and returns the correct data. 
-    - If you're using VSCode with the REST Client you can use the `queries\functioncalls.http` file to call the function.
+    - If you're using VSCode with the REST Client you can use the `queries\function calls.http` file to call the function.
 4. Publish the function to Azure. 
     - Click _Yes_ if you get a message about updating the application setting for FUNCTIONS_EXTENSION_VERSION to "beta".
 5. Add the `CosmosDbApiKey`, `CosmosDbUri` and `CosmosDbConnection` settings to the function Application Settings in the Azure portal.
@@ -118,9 +118,9 @@ We will create an Azure Function that will be triggered each time a document is 
 ### Step 2.3 Creating a Data Factory Pipeline for the taxi trip data
 
 1. Follow the same steps as described in Step 1.2 but replace the complaint data with the taxi trip data (`taxitrips\nyc_taxi_data_2014-01-29.csv`). 
-2. Edit the schema of the source data by using the information in `nyc_taxi_data_column_types.csv`. 
+2. Edit the schema of the source data by using the information in `data\nyc_taxi_data_column_types.csv`. 
 3. Set the cloud units and parallel copies to `8`. 
-4. The copy action will take about 30 mins and should result in 477984 documents being copied.
+4. The copy action will take about 30 mins and should result in 477984 documents being copied. The CosmosDBTrigger will lagg behind so it will take quite some time before all the documents have been updated with the GeoJSON data.
 
 Once the pipeline is started you can spot check some documents in the `taxitrips` collection to verify if the new properties are added by the Azure Function.
 
