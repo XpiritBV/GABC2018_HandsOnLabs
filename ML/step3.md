@@ -20,10 +20,8 @@ We detected a new mob family moving into town. Their properties are listed below
 |3|female|18|0|0|7.2292|C|     
 |3|male|17|0|0|7.8958|S|      
 |1|male|40|1|5|311.3875|C|    
-|1|male|40|1|5|19.3875|Q|
 |2|male|36|1|1|3690|C|
-|3|male|36|1|1|3690|Q|
 
-One of those family members was demoted and forced to move to Queens. We do not know why, but he messed up seriously. Maybe he will be wacked by his own...
+> **Incoming TIP** One of those family members was recently demoted and forced to move to Queens. We do not know why, but he messed up seriously. Maybe he will be wacked by his own...
 
-**Note:** you can use the button 'Test' to feed the parameters to the service for easy testing.
+**Note:** you can use the button 'Test (preview)' to feed the parameters to the service for easy testing.
