@@ -23,12 +23,12 @@
 
 ### Step 1.1. Creating a Cosmos DB & Data Factory instance
 
-1. Use the Azure portal to create a new Cosmos DB instance.
+1. Use the Azure portal to create a new Cosmos DB instance in the `West-Europe` region.
 2. Add a collection with the following properties:
     - Database: `nycdatabase`
     - Collection: `complaints`
-    - Storage: Fixed (10GB)
-    - Throughput: 1000 RU/s
+    - Storage: `Fixed (10GB)`
+    - Throughput: `1000 RU/s`
 ## Step 1.2 Creating a Data Factory Pipeline for the complaint data
 
 1. Create a new Data Factory instance with the following settings:
@@ -44,10 +44,10 @@
     - Connection name: leave as default
     - Network environment: `Public network in Azure environment`
     - Account selection method: `Enter manually`
-    - Storage account name: ``
-    - Storage account key: `` -> Next
+    - Storage account name: (Provide account name given during the workshop.)
+    - Storage account key: (Provide key given during the workshop.) -> Next
 7. Choose the input file or folder:
-    - Browse and select `complaints\NYPD_Complaint_Data_2014_Jan.csv` -> Choose -> Next
+    - Browse and select the blob `complaints\NYPD_Complaint_Data_2014_Jan.csv` -> Choose -> Next
 8. File format settings:
     - File Format: `text`
     - Delimiter: `Comma (,)`
@@ -55,7 +55,7 @@
     - Skip line count: leave empty
     - The first data row contains colomn names: `check`
     - Treat empty column value as null: `check`
-    - Schema -> Edit: Check the `data\NYPD_Complaint_Data_Column_Description.csv` for the correct data types. -> Next
+    - Schema -> Edit: Check [`data\NYPD_Complaint_Data_Column_Description.csv`](data\NYPD_Complaint_Data_Column_Description.csv) for the correct data types. -> Next
 9. Destination:
     - Destination data store: `Azure Cosmos DB` -> Next
 10. Specify Azure Cosmos DB (NoSQL) connection:
@@ -89,11 +89,11 @@ How many murders were committed on 29th Jan 2014?
     - `CosmosDbUri`
     - `CosmosDbConnection`
 3. Run the function locally to check if the function connects to the Cosmos DB instance and returns the correct data. 
-    - If you're using VSCode with the REST Client you can use the `queries\function calls.http` file to call the function.
+    - If you're using VSCode with the REST Client you can use the [`queries\function calls.http`](queries\function calls.http) file to call the function.
 4. Publish the function to Azure. 
     - Click _Yes_ if you get a message about updating the application setting for FUNCTIONS_EXTENSION_VERSION to "beta".
 5. Add the `CosmosDbApiKey`, `CosmosDbUri` and `CosmosDbConnection` settings to the function Application Settings in the Azure portal.
-6. Run the function hosted in Azure and retrieve the records which correspond to murders occurred on the 29th of Jan 2014. 
+6. Run the function hosted in Azure and retrieve the records which correspond to murders committed on the 29th of Jan 2014. 
 
 ## Hands-on Lab 2
 
@@ -103,7 +103,7 @@ How many murders were committed on 29th Jan 2014?
     - Storage: `Fixed (10GB)`
     - Throughput: `2000` RU/s
 
-Do __not__ upload the taxi trip data yet!
+Do __not__ upload the taxi trip data yet! First an Azure Function need to be in place which will be triggered when new records will added (Step 2.2).
 
 ### Step 2.2. Creating an Azure Function to update taxi trip documents once they are added to Cosmos DB
 
@@ -113,12 +113,12 @@ We will create an Azure Function that will be triggered each time a document is 
 
 1. Add a new [Cosmos DB trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb) function to the FunctionApp in VisualStudio that will update the document.
 2. Publish the FunctionApp to Azure.
-3. Verify that the function works by manually adding a document (`nyc_taxi_data_test_document.json`) to the`taxitrips` collection. If this does not work then call one of the HttpTrigger functions in the Function App and retry adding a document manually. Or if all else fails, restart the Function App.
+3. Verify that the function works by manually adding a document [(`nyc_taxi_data_test_document.json`)](data/nyc_taxi_data_test_document.json) to the `taxitrips` collection. If this does not work then call one of the HttpTrigger functions in the Function App and retry adding a document manually. Or if all else fails, restart the Function App.
 
 ### Step 2.3 Creating a Data Factory Pipeline for the taxi trip data
 
-1. Follow the same steps as described in Step 1.2 but replace the complaint data with the taxi trip data (`taxitrips\nyc_taxi_data_2014-01-29.csv`). 
-2. Edit the schema of the source data by using the information in `data\nyc_taxi_data_column_types.csv`. 
+1. Follow the same steps as described in Step 1.2 but replace the complaint data with the taxi trip data blob (`taxitrips\nyc_taxi_data_2014-01-29.csv`). 
+2. Edit the schema of the source data by using the information in [`nyc_taxi_data_column_types.csv`](data/nyc_taxi_data_column_types.csv). 
 3. Set the cloud units and parallel copies to `8`. 
 4. The copy action will take about 30 mins and should result in 477984 documents being copied. The CosmosDBTrigger will lagg behind so it will take quite some time before all the documents have been updated with the GeoJSON data.
 
@@ -126,5 +126,5 @@ Once the pipeline is started you can spot check some documents in the `taxitrips
 
 ### Step 2.4 Write a geospatial query in Cosmos DB 
 
-In Cosmos DB create a SQL query on the `taxitrips` collection to find the trip records which correspond to geo coordinates from the murder record(s). See `queries\Cosmos DB queries.md` for the query.
+In Cosmos DB create a SQL query on the `taxitrips` collection to find the trip records which correspond to geo coordinates from the murder record(s). See [`Cosmos DB queries.md`](queries/Cosmos DB queries.md) for the query.
 
