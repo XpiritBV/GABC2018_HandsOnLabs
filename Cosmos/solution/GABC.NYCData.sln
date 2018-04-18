@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26823.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GABC.NYCData", "GABC.NYCData\GABC.NYCData.csproj", "{501C9790-ECAB-4848-84F8-6E47FC8253FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GABC.TestCosmosData", "GABC.TestCosmosData\GABC.TestCosmosData.csproj", "{669DD91D-6BD3-4DDE-A8F6-F189F04ABCC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{501C9790-ECAB-4848-84F8-6E47FC8253FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{501C9790-ECAB-4848-84F8-6E47FC8253FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{501C9790-ECAB-4848-84F8-6E47FC8253FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{501C9790-ECAB-4848-84F8-6E47FC8253FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{669DD91D-6BD3-4DDE-A8F6-F189F04ABCC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{669DD91D-6BD3-4DDE-A8F6-F189F04ABCC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{669DD91D-6BD3-4DDE-A8F6-F189F04ABCC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{669DD91D-6BD3-4DDE-A8F6-F189F04ABCC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8351C9C2-4E62-4B61-9502-1FCDEBA124F0}
+	EndGlobalSection
+EndGlobal
