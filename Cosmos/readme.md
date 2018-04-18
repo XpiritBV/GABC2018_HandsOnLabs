@@ -55,7 +55,7 @@
     - Skip line count: leave empty
     - The first data row contains colomn names: `check`
     - Treat empty column value as null: `check`
-    - Schema -> Edit: Check [`labs/data/NYPD_Complaint_Data_Column_Description.csv`](labs/data/NYPD_Complaint_Data_Column_Description.csv) for the correct data types. -> Next
+    - Schema -> Edit: Check [`labs/data/NYPD_Complaint_Data_Column_Descriptions.csv`](labs/data/NYPD_Complaint_Data_Column_Description.csv) for the correct data types. -> Next
 9. Destination:
     - Destination data store: `Azure Cosmos DB` -> Next
 10. Specify Azure Cosmos DB (NoSQL) connection:
@@ -89,7 +89,7 @@ How many murders were committed on 29th Jan 2014?
     - `CosmosDbUri`
     - `CosmosDbConnection`
 3. Run the function locally to check if the function connects to the Cosmos DB instance and returns the correct data. 
-    - If you're using VSCode with the REST Client you can use the [`queries\function calls.http`](queries\function calls.http) file to call the function.
+    - If you're using VSCode with the REST Client you can use the [`labs/queries/function_calls.http`](labs/queries/function_calls.http) file to call the function.
 4. Publish the function to Azure. 
     - Click _Yes_ if you get a message about updating the application setting for FUNCTIONS_EXTENSION_VERSION to "beta".
 5. Add the `CosmosDbApiKey`, `CosmosDbUri` and `CosmosDbConnection` settings to the function Application Settings in the Azure portal.
@@ -126,5 +126,5 @@ Once the pipeline is started you can spot check some documents in the `taxitrips
 
 ### Step 2.4 Write a geospatial query in Cosmos DB 
 
-In Cosmos DB create a SQL query on the `taxitrips` collection to find the trip records which correspond to geo coordinates from the murder record(s). See [`labs/queries/Cosmos DB queries.md`](labs/queries/Cosmos DB queries.md) for the query.
+In Cosmos DB create a SQL query on the `taxitrips` collection to find the trip records which correspond to geo coordinates from the murder record(s). See [`labs/queries/Cosmos_DB_queries.md`](labs/queries/Cosmos_DB_queries.md) for the query.
 
