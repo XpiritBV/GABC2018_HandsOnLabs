@@ -83,8 +83,8 @@ How many murders were committed on 29th Jan 2014?
 
 ### Step 1.3. Creating an Azure Function to return complaint data
 
-1. Use the Azure portal to create a FunctionApp on a consumption plan.
-2. In Visual Studio create an new Azure FunctionApp project with an HttpTrigger to query the complaint data by passing in the offense category code and the date so the function returns records matching the offense code and date. Ensure the following settings are configured in the local.settings.json:
+1. Use the Azure portal to create a Function App on a consumption plan.
+2. In Visual Studio create an new Azure Function App project with an HttpTrigger to query the complaint data by passing in the offense category code and the date so the function returns records matching the offense code and date. Rename `local.settings.json.example` to `local.settings.json` and fill in these Cosmos DB related settings:
     - `CosmosDbApiKey`
     - `CosmosDbUri`
     - `CosmosDbConnection`
