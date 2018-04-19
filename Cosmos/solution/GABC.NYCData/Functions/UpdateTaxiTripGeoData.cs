@@ -36,11 +36,16 @@ namespace GABC.NYCData.Functions
 
             foreach (dynamic document in documents)
             {
-                document.pickup_location = new GeoJsonPoint(document.pickup_longitude, document.pickup_latitude);
-                document.dropoff_location = new GeoJsonPoint(document.dropoff_longitude, document.dropoff_latitude);
-                DocumentClient.ReplaceDocumentAsync(document);
+                // Only add the GeoJson data when it's not yet added to the document 
+                // to prevent an endless update loop.
+                if (document.GetType().GetProperty("pickup_location") == null)
+                {
+                    document.pickup_location = new GeoJsonPoint(document.pickup_longitude, document.pickup_latitude);
+                    document.dropoff_location = new GeoJsonPoint(document.dropoff_longitude, document.dropoff_latitude);
+                    DocumentClient.ReplaceDocumentAsync(document);
 
-                log.Info($"Updated {document.id}.");
+                    log.Info($"Updated {document.id}.");
+                }
             } 
         }
     }
