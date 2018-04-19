@@ -15,12 +15,15 @@ Big Brother is watching you! In this challenge, you’ll be building an all-seei
 An anonymous tip came in last night. A murder is about to be committed. You will guide the agents of the State Police when and where to start their investigation, with the help of Azure Machine Learning. 
 
 - 11:30 -12:00 > **Marc Duiker**  
-Join the CSI New York team and analyze crimes using the Azure platform! We will use DataFactory to import a dataset with crimes committed in New York City and we will extract information from it, based on geospatial queries.
+Join the CSI New York team and analyze crimes using the Azure platform! We will use DataFactory to import a dataset, with crimes committed in New York City, into Cosmos DB and we will extract information from it using Azure Functions.
 
 - 12:00 -12:30 > Lunch
 
 - 12:30 -16:00 > Hands-on Labs.   
-Three tracks to get started learning Azure Cognitive Services, Machine Learning, and DataFactory.
+Three tracks to get started learning:
+    - Azure Cognitive Services
+    - [Machine Learning](/ML) and 
+    - [DataFactory, Cosmos DB, Azure Functions](/Cosmos).
 
 
 > Don't forget to bring your laptop!  
