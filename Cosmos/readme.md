@@ -19,6 +19,17 @@
 - [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator) (part of Azure SDK or seperate download)
 - Recommended: VSCode with REST Client extension (Postman can also be used)
 
+## Data sets
+
+The following files are available on Azure blob storage (credentials will be provided during the workshop):
+
+- `complaints\NYPD_Complaint_Data_2014_Jan.csv`
+- `complaints\NYPD_Complaint_Data_2014_Jan_first10lines.csv`
+- `taxitrips\nyc_taxi_data_2014-01-29.csv`
+- `taxitrips\nyc_taxi_data_2014-01-29_first10lins.csv`
+
+The two files marked with `first10lines` can be used as test data before starting the import of the larger data sets.
+
 ## Hands-on Lab 1
 
 ### Step 1.1. Creating a Cosmos DB & Data Factory instance
