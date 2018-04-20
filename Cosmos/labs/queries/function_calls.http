@@ -1,22 +1,41 @@
+### LOCAL
 ### Retrieve a document from CosmosDB by its document id
 @database = nycdatabase
 @collection = complaints
 @documentid = TODO
 GET http://localhost:7071/api/getbyid/{{database}}/{{collection}}/{{documentid}}
 
+### LOCAL
 ### Retrieve complaints by offense id
 @offenseId = 101
 
 GET http://localhost:7071/api/getComplaintsByOffenseId/{{offenseId}}
 
+### LOCAL
 ### Retrieve complaints by offense id and date
 @date = 2014-01-29
 GET http://localhost:7071/api/getComplaintsByOffenseId/{{offenseId}}?date={{date}}
 
-### Remote: Retrieve complaints based on the offense ID and date
-@functionUrlBase = gabcnyc-func.azurewebsites.net
+### LOCAL
+### Retrieve taxi trips by date and location
+POST http://localhost:7071/api/getTaxiTripsWithinRange
+Content-Type: application/json
+
+{
+    "Location" : {
+        "type" : "Point",
+        "coordinates" : [-73.882309442, 40.764803027]
+    },
+    "RadiusInMeter" : 600,
+    "DateTime" : "2014-01-29T00:06:00",
+    "TimeSpan" : "00:02:00"
+}
+
+### REMOTE
+### Retrieve complaints based on the offense ID and date
+@functionUrlBase = nycdata-func.azurewebsites.net
 @offenseId = 101
-@functionkey = TODO
+@functionkey = 
 @date = 2014-01-29
 GET https://{{functionUrlBase}}/api/getComplaintsByOffenseId/{{offenseId}}?code={{functionkey}}&date={{date}}
 
