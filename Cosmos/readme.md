@@ -36,18 +36,22 @@ The two files marked with `first10lines` can be used as test data before startin
 
 Find out how many murders have been committed on the 29th of Jan 2014.
 
-### Step 1.1. Creating a Cosmos DB & Data Factory instance
+### Step 1.1. Creating a Cosmos DB account
 
-1. Use the Azure portal to create a new Cosmos DB account in the `West-Europe` region.
+Let's create a Cosmos DB account to store the complain data.
+
+1. Use the Azure portal to create a new Cosmos DB account in the `West-Europe` region and provide a meaningfull name such as `gabc-nyc-cosmosdb`.
 2. Add a database & collection with the following properties:
     - Database: `nycdatabase`
     - Collection: `complaints`
     - Storage: `Fixed (10GB)`
     - Throughput: `1000 RU/s`
 
-## Step 1.2 Creating a Data Factory Pipeline for the complaint data
+### Step 1.2 Creating a Data Factory Pipeline for the complaint data
 
-1. Create a new Data Factory instance with the following settings:
+Now let's configure the Data Factory pipeline in order to transfer the csv data to Cosmos DB.
+
+1. Use the Azure portal to create a new Data Factory instance with the following settings:
     - Version: `V2`
     - Location: `West Europe`
 2. Open the new Data Factory instance and select the `Author & Monitor` quick link. 
@@ -95,9 +99,11 @@ Find out how many murders have been committed on the 29th of Jan 2014.
 15. Deployment -> Monitor. The copy action will take approx 7 minutes and should copy 39219 complaint records into Cosmos DB.
 16. Go to the Cosmos DB instance and navigate to the complaints collection. Create a SQL query to find the complaint records which correspond to a murder on 29th Jan 2014. In the next step you will create an Azure Function that can retrieve this data through an HTTP endpoint.
 
-### Step 1.3. Creating an Azure Function to return complaint data
+### Step 1.3. Creating a Function App with an HttpTrigger function to return complaint data
 
-1. Use the Azure portal to create a Function App on a consumption plan in West Europe.
+Now let's create an Azure Function to retrieve the data from Cosmos DB.
+
+1. Use the Azure portal to create a new Function App on a consumption plan in West Europe. We won't use the portal to write the function code there. We'll do that in Visual Studio.
 2. Open the `labs/src/GABC.NYCData.Labs.sln` solution and complete the [HttpTrigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook) function named `GetComplaintsByOffenseId` to query the complaint records matching a given offense code and date. 
 3. Rename `local.settings.json.example` to `local.settings.json` and fill in these Cosmos DB related settings which you can find in the CosmosDB account you created in Step 1.1:
     - `CosmosDbApiKey`
@@ -118,17 +124,21 @@ Find the taxi(s) which the murderer could have used for the murder committed at 
 
 ### Step 2.1. Creating additional collections in Cosmos DB for the taxi trip data.
 
+For the taxt trip data we will use another collection (`taxitrips`) in the existing Cosmos DB database. The CosmosDBTrigger Azure Function requires a seperate collection (`leases`) for the [Cosmos DB changefeed](https://docs.microsoft.com/en-us/azure/cosmos-db/change-feed). This collection should be created automatically when the Function App is published but you can also create it yourself just to be sure.
+
 1. Add two collections named `taxitrips` and `leases` to the existing `nycdatabase` Cosmos DB with the following properties:
     - Storage: `Fixed (10GB)`
     - Throughput: `2000 RU/s`
 
-Do __not__ upload the taxi trip data yet! First an Azure Function need to be in place which will be triggered when new records will added (Step 2.2).
+Note that the throughput is higher than the `complaint` collection. This is because we want to import the taxi trip data at a higher rate so we don't need to wait so long. Feel free to use even higher throughputs.
+
+Do __not__ upload the taxi trip data yet! First an Azure Function need to be in place which will be triggered when new records will added.
 
 ### Step 2.2. Creating an Azure Function to update taxi trip documents once they are added to Cosmos DB
 
 The NYC taxi trip record set contains geo coordinates for pickup and drop off locations but this data can't be directly queried by Cosmos DB because it is not in the [GeoJSON](https://docs.microsoft.com/en-us/azure/cosmos-db/geospatial) format. 
 
-We will create an Azure Function that will be triggered each time a document is added (or updated) in the Cosmos DB `taxitrips` collection. The function  will add two properties (`pickup_location` & `dropoff_location`) to the document in GeoJSON format.
+We will write an Azure Function that will be triggered each time a document is added (or updated) in the Cosmos DB `taxitrips` collection. The function  will add two properties (`pickup_location` & `dropoff_location`) to the document in GeoJSON format.
 
 1. Open the `labs/src/GABC.NYCData.Labs.sln` solution and complete the [Cosmos DB trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb) function named `UpdateTaxiTripGeoData`.
 2. Publish the Function App to Azure.
@@ -136,7 +146,7 @@ We will create an Azure Function that will be triggered each time a document is 
 
 ### Step 2.3 Creating a Data Factory Pipeline for the taxi trip data
 
-1. Follow the same steps as described in Step 1.2 but replace the complaint data with the taxi trip data blob (`taxitrips\nyc_taxi_data_2014-01-29.csv`). 
+1. Follow the same steps as described in Step 1.2 but replace the names and data file with the taxi trip data (`taxitrips\nyc_taxi_data_2014-01-29.csv`). 
 2. Edit the schema of the source data by using the information in [`labs/data/nyc_taxi_data_column_types.csv`](labs/data/nyc_taxi_data_column_types.csv). 
 3. Set the cloud units and parallel copies to `8`.
 4. The copy action will take about 35 mins and should result in 477984 documents being copied. The CosmosDBTrigger will lagg behind a bit so it will take some time before all the documents have been updated with the GeoJSON data.
