@@ -4,7 +4,7 @@ Welcome to the Machine Learning workshop of the Global Azure Bootcamp. In this w
 
 ## Introduction
 
-> TODO link to the presentation
+See the [presentation](GABC%202018%20Machine%20Learning.pdf) for some background information.
 
 ## About the data
 
