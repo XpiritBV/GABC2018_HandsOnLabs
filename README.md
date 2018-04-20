@@ -21,7 +21,7 @@ Join the CSI New York team and analyze crimes using the Azure platform! We will 
 
 - 12:30 -16:00 > Hands-on Labs.   
 Three tracks to get started learning:
-    - Azure Cognitive Services
+    - [Azure Cognitive Services](https://github.com/XpiritBV/gabc-cognitivebot)
     - [Machine Learning](/ML) and 
     - [DataFactory, Cosmos DB, Azure Functions](/Cosmos).
 
