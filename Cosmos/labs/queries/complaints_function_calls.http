@@ -20,6 +20,6 @@ GET http://localhost:7071/api/getComplaintsByOffenseId/{{offenseId}}?date={{date
 ### Retrieve complaints based on the offense ID and date
 @functionUrlBase = nycdata-func.azurewebsites.net
 @offenseId = 101
-@functionkey = dPk5yrva6oxa62r0AFbG9juQucQQ29aCUDbRgkTbA8kTZJaCljJsaw==
+@functionkey = 
 @date = 2014-01-29
 GET https://{{functionUrlBase}}/api/getComplaintsByOffenseId/{{offenseId}}?code={{functionkey}}&date={{date}}
