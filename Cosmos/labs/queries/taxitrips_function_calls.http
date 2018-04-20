@@ -1,0 +1,31 @@
+### LOCAL
+### Retrieve taxi trips by date and location
+POST http://localhost:7071/api/getTaxiTripsWithinRange
+Content-Type: application/json
+
+{
+    "Location" : {
+        "type" : "Point",
+        "coordinates" : [-73.882309442, 40.764803027]
+    },
+    "RadiusInMeter" : 600,
+    "DateTime" : "2014-01-29T00:06:00",
+    "TimeSpan" : "00:05:00"
+}
+
+### REMOTE
+### Retrieve taxi trips by date and location
+@functionUrlBase = nycdata-func.azurewebsites.net
+@functionkey = 
+POST http://{{functionUrlBase}}/api/getTaxiTripsWithinRange?code={{functionkey}}
+Content-Type: application/json
+
+{
+    "Location" : {
+        "type" : "Point",
+        "coordinates" : [-73.882309442, 40.764803027]
+    },
+    "RadiusInMeter" : 600,
+    "DateTime" : "2014-01-29T00:06:00",
+    "TimeSpan" : "00:05:00"
+}
