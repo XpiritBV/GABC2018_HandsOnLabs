@@ -110,7 +110,7 @@ Now let's create an Azure Function to retrieve the data from Cosmos DB.
     - `CosmosDbUri`
     - `CosmosDbConnection`
 4. Run the function locally to check if the function connects to the Cosmos DB instance and returns data. 
-    - If you're using VSCode with the REST Client you can use the [`labs/queries/function_calls.http`](labs/queries/function_calls.http) file to call the function.
+    - If you're using VSCode with the REST Client you can use the [`labs/queries/complaints_function_calls.http`](labs/queries/complaints_function_calls.http) file to call the function.
 5. Publish the function to Azure. 
     - Click _Yes_ if you get a message about updating the application setting for FUNCTIONS_EXTENSION_VERSION to "beta". This is because we're using the v2 preview of Azure Functions.
 6. Add the `CosmosDbApiKey`, `CosmosDbUri` and `CosmosDbConnection` settings to the function Application Settings in the Azure portal.
