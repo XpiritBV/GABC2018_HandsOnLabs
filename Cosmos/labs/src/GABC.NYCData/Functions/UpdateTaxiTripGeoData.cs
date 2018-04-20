@@ -20,11 +20,8 @@ namespace GABC.NYCData.Functions
         /// <summary>
         /// This function will add pickup_location and dropoff_location properties 
         /// to a taxitrip document in GeoJSON format.
-        /// 
-        /// Comment the [FunctionName()] attribute in order to run the other functions locally.
-        /// Uncomment it before the Function App is published to Azure.
         /// </summary>
-        //[FunctionName("UpdateTaxiTripGeoData")]
+        [FunctionName(nameof(UpdateTaxiTripGeoData))]
         public static void Run(
             [CosmosDBTrigger(
                 NycDatabase, 

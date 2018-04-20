@@ -25,7 +25,7 @@ namespace GABC.NYCData.Functions
         private const string NycDatabase = "nycdatabase";
         private const string ComplaintsCollection = "complaints";
 
-        [FunctionName("GetComplaintsByOffenseId")]
+        [FunctionName(nameof(GetComplaintsByOffenseId))]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Function, "get")]HttpRequest req, 
             TraceWriter log)

@@ -20,7 +20,7 @@ namespace GABC.NYCData.Functions
         private static readonly string CosmosDbUri = Environment.GetEnvironmentVariable("CosmosDbUri");
         private static readonly DocumentClient DocumentClient = new DocumentClient(new Uri(CosmosDbUri), CosmosDbApiKey);
 
-        [FunctionName("GetDocumentById")]
+        [FunctionName(nameof(GetDocumentById))]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getById/{databaseId}/{collectionId}/{documentId}")]HttpRequest req, 
             string databaseId,
@@ -28,8 +28,6 @@ namespace GABC.NYCData.Functions
             string documentId,
             TraceWriter log)
         {
-            log.Info("C# HTTP trigger function processed a request.");
-
             var documentUri = UriFactory.CreateDocumentUri(
                 databaseId,
                 collectionId,
