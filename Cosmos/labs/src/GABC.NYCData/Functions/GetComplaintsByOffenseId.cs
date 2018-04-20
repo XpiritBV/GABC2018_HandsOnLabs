@@ -27,39 +27,21 @@ namespace GABC.NYCData.Functions
 
         [FunctionName("GetComplaintsByOffenseId")]
         public static IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getComplaintsByOffenseId/{offenseId}")]HttpRequest req, 
-            string offenseId,
+            [HttpTrigger(AuthorizationLevel.Function, "get")]HttpRequest req, 
             TraceWriter log)
         {
-            log.Info($"GetComplaintsByOffenseId {offenseId}.");
 
-            var queryParameters = req.GetQueryParameterDictionary();
-            queryParameters.TryGetValue("date", out string dateString);
-            DateTime.TryParse(dateString, out DateTime date);
+            /* 
+             *  Tips:
+             *  
+             *  You'll need an `offenseId` and a `date` to query the complaint data.
+             *  These can be part of the function route or provided as query string parameters.
+             *
+             *  Use DocumentClient.CreateDocumentQuery to create a query for Complaint objects.
+             */
 
-            var complaintsCollectionUri = UriFactory.CreateDocumentCollectionUri(
-                NycDatabase,
-                ComplaintsCollection);
+            throw new NotImplementedException();
 
-            IActionResult result;
-
-            try
-            {
-                var complaints = DocumentClient.CreateDocumentQuery<Complaint>(complaintsCollectionUri)
-                    .Where(complaint => complaint.OffenseId == offenseId)
-                    .Where(complaint => string.IsNullOrEmpty(dateString) || complaint.Date == date)
-                    .AsEnumerable();
-
-                result = new OkObjectResult(
-                    JsonConvert.SerializeObject(complaints, Formatting.Indented)
-                );
-            }
-            catch (Exception e)
-            {
-                result = new BadRequestObjectResult(e);
-            }
-
-            return result;
         }
     }
 }

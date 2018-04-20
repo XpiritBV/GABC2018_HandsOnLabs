@@ -24,7 +24,7 @@ namespace GABC.NYCData.Functions
         /// Comment the [FunctionName()] attribute in order to run the other functions locally.
         /// Uncomment it before the Function App is published to Azure.
         /// </summary>
-        [FunctionName("UpdateTaxiTripGeoData")]
+        //[FunctionName("UpdateTaxiTripGeoData")]
         public static void Run(
             [CosmosDBTrigger(
                 NycDatabase, 
@@ -36,21 +36,17 @@ namespace GABC.NYCData.Functions
             IReadOnlyList<Document> documents,
             TraceWriter log)
         {
-            log.Info($"Processing {documents.Count} documents...");
 
-            foreach (dynamic document in documents)
-            {
-                // Only add the GeoJson data when it's not yet added to the document 
-                // to prevent an endless update loop.
-                if (document.GetType().GetProperty("pickup_location") == null)
-                {
-                    document.pickup_location = new GeoJsonPoint(document.pickup_longitude, document.pickup_latitude);
-                    document.dropoff_location = new GeoJsonPoint(document.dropoff_longitude, document.dropoff_latitude);
-                    DocumentClient.ReplaceDocumentAsync(document);
-
-                    log.Info($"Updated {document.id}.");
-                }
-            } 
+            /*
+             * Tips:
+             * 
+             * You can use the dynamic type for the document 
+             * in order to add new properties easily.
+             * 
+             * Be careful not to always add the properties 
+             * since that will result in an endless update loop.
+             * 
+             */
         }
     }
 }

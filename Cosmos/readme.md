@@ -38,12 +38,13 @@ Find out how many murders have been committed on the 29th of Jan 2014.
 
 ### Step 1.1. Creating a Cosmos DB & Data Factory instance
 
-1. Use the Azure portal to create a new Cosmos DB instance in the `West-Europe` region.
-2. Add a collection with the following properties:
+1. Use the Azure portal to create a new Cosmos DB account in the `West-Europe` region.
+2. Add a database & collection with the following properties:
     - Database: `nycdatabase`
     - Collection: `complaints`
     - Storage: `Fixed (10GB)`
     - Throughput: `1000 RU/s`
+
 ## Step 1.2 Creating a Data Factory Pipeline for the complaint data
 
 1. Create a new Data Factory instance with the following settings:
@@ -96,17 +97,18 @@ Find out how many murders have been committed on the 29th of Jan 2014.
 
 ### Step 1.3. Creating an Azure Function to return complaint data
 
-1. Use the Azure portal to create a Function App on a consumption plan.
-2. In Visual Studio create an new Azure Function App project with an HttpTrigger to query the complaint data by passing in the offense category code and the date so the function returns records matching the offense code and date. Rename `local.settings.json.example` to `local.settings.json` and fill in these Cosmos DB related settings:
+1. Use the Azure portal to create a Function App on a consumption plan in West Europe.
+2. Open the `labs/src/GABC.NYCData.Labs.sln` solution and complete the [HttpTrigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook) function named `GetComplaintsByOffenseId` to query the complaint records matching a given offense code and date. 
+3. Rename `local.settings.json.example` to `local.settings.json` and fill in these Cosmos DB related settings which you can find in the CosmosDB account you created in Step 1.1:
     - `CosmosDbApiKey`
     - `CosmosDbUri`
     - `CosmosDbConnection`
-3. Run the function locally to check if the function connects to the Cosmos DB instance and returns the correct data. 
+4. Run the function locally to check if the function connects to the Cosmos DB instance and returns data. 
     - If you're using VSCode with the REST Client you can use the [`labs/queries/function_calls.http`](labs/queries/function_calls.http) file to call the function.
-4. Publish the function to Azure. 
-    - Click _Yes_ if you get a message about updating the application setting for FUNCTIONS_EXTENSION_VERSION to "beta".
-5. Add the `CosmosDbApiKey`, `CosmosDbUri` and `CosmosDbConnection` settings to the function Application Settings in the Azure portal.
-6. Run the function hosted in Azure and retrieve the records which correspond to murders committed on the 29th of Jan 2014. 
+5. Publish the function to Azure. 
+    - Click _Yes_ if you get a message about updating the application setting for FUNCTIONS_EXTENSION_VERSION to "beta". This is because we're using the v2 preview of Azure Functions.
+6. Add the `CosmosDbApiKey`, `CosmosDbUri` and `CosmosDbConnection` settings to the function Application Settings in the Azure portal.
+7. Run the function hosted in Azure and retrieve the records which correspond to murders committed on the 29th of Jan 2014. 
 
 How many murders were committed on 29th Jan 2014?
 
@@ -126,18 +128,18 @@ Do __not__ upload the taxi trip data yet! First an Azure Function need to be in 
 
 The NYC taxi trip record set contains geo coordinates for pickup and drop off locations but this data can't be directly queried by Cosmos DB because it is not in the [GeoJSON](https://docs.microsoft.com/en-us/azure/cosmos-db/geospatial) format. 
 
-We will create an Azure Function that will be triggered each time a document is added (or updated) in the Cosmos DB `taxitrips` collection. The function  will add two properties (`pickup` & `dropoff`) to the document in GeoJSON format.
+We will create an Azure Function that will be triggered each time a document is added (or updated) in the Cosmos DB `taxitrips` collection. The function  will add two properties (`pickup_location` & `dropoff_location`) to the document in GeoJSON format.
 
-1. Add a new [Cosmos DB trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb) function to the FunctionApp in VisualStudio that will update the document.
-2. Publish the FunctionApp to Azure.
-3. Verify that the function works by manually adding a document [(`labs/data/nyc_taxi_data_test_document.json`)](labs/data/nyc_taxi_data_test_document.json) to the `taxitrips` collection. If this does not work then call one of the HttpTrigger functions in the Function App and retry adding a document manually. Or if all else fails, restart the Function App.
+1. Open the `labs/src/GABC.NYCData.Labs.sln` solution and complete the [Cosmos DB trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-cosmosdb) function named `UpdateTaxiTripGeoData`.
+2. Publish the Function App to Azure.
+3. Verify that the function works by manually adding a document [(`labs/data/nyc_taxi_data_test_document.json`)](labs/data/nyc_taxi_data_test_document.json) to the `taxitrips` collection manually through the Azure portal. If this does not work then call one of the HttpTrigger functions in the Function App and retry adding a document manually. Or, if all else fails, restart the Function App and retry.
 
 ### Step 2.3 Creating a Data Factory Pipeline for the taxi trip data
 
 1. Follow the same steps as described in Step 1.2 but replace the complaint data with the taxi trip data blob (`taxitrips\nyc_taxi_data_2014-01-29.csv`). 
 2. Edit the schema of the source data by using the information in [`labs/data/nyc_taxi_data_column_types.csv`](labs/data/nyc_taxi_data_column_types.csv). 
-3. Set the cloud units and parallel copies to `8`. 
-4. The copy action will take about 30 mins and should result in 477984 documents being copied. The CosmosDBTrigger will lagg behind so it will take quite some time before all the documents have been updated with the GeoJSON data.
+3. Set the cloud units and parallel copies to `8`.
+4. The copy action will take about 35 mins and should result in 477984 documents being copied. The CosmosDBTrigger will lagg behind a bit so it will take some time before all the documents have been updated with the GeoJSON data.
 
 Once the pipeline is started you can spot check some documents in the `taxitrips` collection to verify if the new properties are added by the Azure Function.
 
