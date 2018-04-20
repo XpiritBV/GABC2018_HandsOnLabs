@@ -25,14 +25,12 @@ namespace GABC.NYCData.Functions
         private const string NycDatabase = "nycdatabase";
         private const string ComplaintsCollection = "complaints";
 
-        [FunctionName("GetComplaintsByOffenseId")]
+        [FunctionName(nameof(GetComplaintsByOffenseId))]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = "getComplaintsByOffenseId/{offenseId}")]HttpRequest req, 
             string offenseId,
             TraceWriter log)
         {
-            log.Info($"GetComplaintsByOffenseId {offenseId}.");
-
             var queryParameters = req.GetQueryParameterDictionary();
             queryParameters.TryGetValue("date", out string dateString);
             DateTime.TryParse(dateString, out DateTime date);

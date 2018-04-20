@@ -26,9 +26,6 @@ namespace GABC.NYCData.Functions
         /// <summary>
         /// This function will retrieve taxi trip data the given range, location and date.
         /// </summary>
-        /// <param name="req"></param>
-        /// <param name="log"></param>
-        /// <returns></returns>
         [FunctionName(nameof(GetTaxiTripsWithinRange))]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = "getTaxiTripsWithinRange")]HttpRequest req, 
@@ -46,7 +43,7 @@ namespace GABC.NYCData.Functions
             try
             {
                 var taxiTrips = DocumentClient.CreateDocumentQuery<TaxiTrip>(taxiTripsCollectionUri)
-                    .Where(trip => trip.PickupLocation.Distance(input.Location) < input.RadiusInMeter)
+                    .Where(trip => trip.PickupLocation.Distance(input.Location) <= input.RadiusInMeter)
                     .Where(
                         trip => trip.PickupDateTime >= input.DateTime.Add(-input.TimeSpan) &&
                                 trip.PickupDateTime <= input.DateTime.Add(input.TimeSpan))
