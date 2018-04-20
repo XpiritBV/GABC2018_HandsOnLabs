@@ -1,8 +1,10 @@
 # Global Azure Bootcamp 2018 - Cosmos DB
 
+If you're not physically present at Xebia Amsterdam during the Global Azure bootcamp and have questions about the labs then please contact [Marc Duiker](https://twitter.com/marcduiker).
+
 ## Functional objectives
 
-1. Find out how many murders have been committed on the 29th of Jan 2014
+1. Find out how many murders have been committed on the 29th of Jan 2014.
 2. Find the taxi(s) which the murderer could have used for the murder committed at 00:06.
 
 ## Technical objectives
@@ -31,6 +33,8 @@ The following files are available on Azure blob storage (credentials will be pro
 The two files marked with `first10lines` can be used as test data before starting the import of the larger data sets.
 
 ## Hands-on Lab 1
+
+Find out how many murders have been committed on the 29th of Jan 2014.
 
 ### Step 1.1. Creating a Cosmos DB & Data Factory instance
 
@@ -90,8 +94,6 @@ The two files marked with `first10lines` can be used as test data before startin
 15. Deployment -> Monitor. The copy action will take approx 7 minutes and should copy 39219 complaint records into Cosmos DB.
 16. Go to the Cosmos DB instance and navigate to the complaints collection. Create a SQL query to find the complaint records which correspond to a murder on 29th Jan 2014. In the next step you will create an Azure Function that can retrieve this data through an HTTP endpoint.
 
-How many murders were committed on 29th Jan 2014?
-
 ### Step 1.3. Creating an Azure Function to return complaint data
 
 1. Use the Azure portal to create a Function App on a consumption plan.
@@ -106,7 +108,11 @@ How many murders were committed on 29th Jan 2014?
 5. Add the `CosmosDbApiKey`, `CosmosDbUri` and `CosmosDbConnection` settings to the function Application Settings in the Azure portal.
 6. Run the function hosted in Azure and retrieve the records which correspond to murders committed on the 29th of Jan 2014. 
 
+How many murders were committed on 29th Jan 2014?
+
 ## Hands-on Lab 2
+
+Find the taxi(s) which the murderer could have used for the murder committed at 00:06.
 
 ### Step 2.1. Creating additional collections in Cosmos DB for the taxi trip data.
 
@@ -139,3 +145,4 @@ Once the pipeline is started you can spot check some documents in the `taxitrips
 
 In Cosmos DB create a SQL query on the `taxitrips` collection to find the trip records which correspond to geo coordinates from the murder record(s). See [`labs/queries/Cosmos_DB_queries.md`](labs/queries/Cosmos_DB_queries.md) for the query.
 
+What is the taxi pickup time and the pickup and dropoff coordinates?
