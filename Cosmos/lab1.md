@@ -84,5 +84,42 @@ Now let's create an Azure Function to retrieve the data from Cosmos DB.
 
 How many murders were committed on 29th Jan 2014?
 
+4 Murders - Just Like Below :)
+
+[
+  {
+    "Id": "81b28796-82a9-4b14-a145-0d696433f6df",
+    "CMPLNT_FR_DT": "2014-01-29T00:00:00",
+    "CMPLNT_FR_TM": "21:30:00",
+    "KY_CD": "101",
+    "Latitude": 40.687408886,
+    "Longitude": -73.791248699
+  },
+  {
+    "Id": "d00390ff-f38e-4c19-8e66-8896d769852f",
+    "CMPLNT_FR_DT": "2014-01-29T00:00:00",
+    "CMPLNT_FR_TM": "17:10:00",
+    "KY_CD": "101",
+    "Latitude": 40.652727946,
+    "Longitude": -73.948321553
+  },
+  {
+    "Id": "f02f56dc-e5b6-458d-8a04-16c5868cdf1a",
+    "CMPLNT_FR_DT": "2014-01-29T00:00:00",
+    "CMPLNT_FR_TM": "00:06:00",
+    "KY_CD": "101",
+    "Latitude": 40.764803027,
+    "Longitude": -73.882309442
+  },
+  {
+    "Id": "deaab326-1fe9-4846-93cd-7b9054321ed9",
+    "CMPLNT_FR_DT": "2014-01-29T00:00:00",
+    "CMPLNT_FR_TM": "00:06:00",
+    "KY_CD": "101",
+    "Latitude": 40.764803027,
+    "Longitude": -73.882309442
+  }
+]
+
 << Back to the main [readme](readme.md) || Continue with [Hands-on Lab 2](lab2.md) >>
  
