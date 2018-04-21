@@ -6,7 +6,7 @@ Find out how many murders have been committed on the 29th of Jan 2014.
 
 Let's create a Cosmos DB account to store the complain data.
 
-1. Use the Azure portal to create a new Cosmos DB account in the `West-Europe` region and provide a meaningfull name such as `gabc-nyc-cosmosdb`.
+1. Use the Azure portal to create a new Cosmos DB account. Provide a meaningfull name such as `gabc-nyc-cosmosdb` and specify to use the `SQL API`.
 2. Add a database & collection with the following properties:
     - Database: `nycdatabase`
     - Collection: `complaints`
