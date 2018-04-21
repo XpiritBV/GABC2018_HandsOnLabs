@@ -26,7 +26,7 @@ You will now have a nice starting point to begin building your own model for thi
 
 ## Import data
 
-As we are not interested in this specific sample data but want to analyze our victim data set, we need to import our data. Remove the existing `Adult Census Income Binary Classification dataset` and replace it with an `Import Data` block. Select CSV as the data source and select as data source the `Web URL via HTTP`. 
+As we are not interested in this specific sample data but want to analyze our victim data set, we need to import our data. Remove the existing `Adult Census Income Binary Classification dataset` and replace it with an `Import Data` block. Select CSV as the data source and select as data source the `Web URL via HTTP`. Also select the option to indicate that the CSV has headers.
 
 ![azuremlimportdata.png](azuremlimportdata.png)
 
@@ -50,7 +50,7 @@ Time to split the data, we need some of it to train, some of it to learn the mod
 
 ## Train
 
-Part of the split data goes to the model training part. Which is based on the *two-class boosted decision tree*. There are more classification options available, so when you have time, try some others to see how they score (see below for an explanation how to check the scoring).
+Part of the split data goes to the model training part. Which is based on the *two-class boosted decision tree*. There are more classification options available, so when you have time, try some others to see how they score (see below for an explanation how to check the scoring). Make sure to select the IsAlive column as the columns you want to train for.
 
 ## Score and evaluate
 
