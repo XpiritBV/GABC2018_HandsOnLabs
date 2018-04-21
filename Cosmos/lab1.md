@@ -86,6 +86,7 @@ How many murders were committed on 29th Jan 2014?
 
 4 Murders - Just Like Below :)
 
+```json
 [
   {
     "Id": "81b28796-82a9-4b14-a145-0d696433f6df",
@@ -120,6 +121,7 @@ How many murders were committed on 29th Jan 2014?
     "Longitude": -73.882309442
   }
 ]
+```
 
 << Back to the main [readme](readme.md) || Continue with [Hands-on Lab 2](lab2.md) >>
  
