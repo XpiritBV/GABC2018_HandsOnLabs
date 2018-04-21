@@ -4,7 +4,7 @@ If you're not physically present at Xebia Amsterdam during the Global Azure boot
 
 ## Presentation slides
 
-[GABC_2018_Xpirit_Managing and querying datasets.pdf](presentation/GABC_2018_Xpirit_Managing and querying datasets.pdf)
+[GABC_2018_Xpirit_Managing_and_querying_datasets.pdf](presentation/GABC_2018_Xpirit_Managing_and_querying_datasets.pdf)
 
 ## Functional objectives
 
