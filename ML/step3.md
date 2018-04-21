@@ -14,13 +14,13 @@ We built this model to predict who will be the next victim and with some hints, 
 
 We detected a new mob family moving into town. Their properties are listed below and are not part of the already trained model. Use the following data and record the outcome.
 
-|Rank|Gender|Age|SiblingSpouse|ParentChild|Income|Neighbourhood|
-|--|--|--|--|--|--|--|
-|3|female|34.5|0|0|7.8292|Q|   
-|3|female|18|0|0|7.2292|C|     
-|3|male|17|0|0|7.8958|S|      
-|1|male|40|1|5|311.3875|C|    
-|2|male|36|1|1|3690|C|
+|Rank|Gender|Age|SiblingSpouse|ParentChild|Income|Neighbourhood|Name|
+|--|--|--|--|--|--|--|--|
+|3|female|34.5|0|0|7.8292|Q|Maria Licciardi|   
+|3|female|18|0|0|7.2292|C|Connie Corleone|     
+|3|male|17|0|0|7.8958|S|Al Capone|      
+|1|male|40|1|5|311.3875|C|Lucky Luciano|    
+|2|male|36|1|1|3690|C|John Dillinger|
 
 **Note:** you can use the button 'Test (preview)' to feed the parameters to the service for easy testing.
 
