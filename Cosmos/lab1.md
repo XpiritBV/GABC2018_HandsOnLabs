@@ -41,7 +41,7 @@ Now let's configure the Data Factory pipeline in order to transfer the csv data 
     - Skip line count: leave empty
     - The first data row contains colomn names: `check`
     - Treat empty column value as null: `check`
-    - Schema -> Edit: Check [`labs/data/NYPD_Complaint_Data_Column_Descriptions.csv`](labs/data/NYPD_Complaint_Data_Column_Description.csv) for the correct data types. -> Next
+    - Schema -> Edit: Check [`labs/data/NYPD_Complaint_Data_Column_Descriptions.csv`](labs/data/NYPD_Complaint_Data_Column_Descriptions.csv) for the correct data types. -> Next
 9. Destination:
     - Destination data store: `Azure Cosmos DB` -> Next
 10. Specify Azure Cosmos DB (NoSQL) connection:
