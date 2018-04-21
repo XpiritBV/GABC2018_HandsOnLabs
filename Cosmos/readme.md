@@ -2,6 +2,10 @@
 
 If you're not physically present at Xebia Amsterdam during the Global Azure bootcamp and have questions about the labs then please contact [Marc Duiker](https://twitter.com/marcduiker).
 
+## Presentation slides
+
+[GABC_2018_Xpirit_Managing and querying datasets.pdf](presentation/GABC_2018_Xpirit_Managing and querying datasets.pdf)
+
 ## Functional objectives
 
 1. Find out how many murders have been committed on the 29th of Jan 2014.
