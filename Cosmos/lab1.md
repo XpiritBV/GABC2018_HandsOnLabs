@@ -84,7 +84,7 @@ Now let's create an Azure Function to retrieve the data from Cosmos DB.
 
 How many murders were committed on 29th Jan 2014?
 
-###4 Murders - Just Like Below :)
+### 4 Murders - Just Like Below :)
 
 ```json
 [
